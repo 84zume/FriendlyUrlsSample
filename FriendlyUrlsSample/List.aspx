@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="List.aspx.cs" Inherits="FriendlyUrlsSample.List" %>
+
 <%@ Import Namespace="Microsoft.AspNet.FriendlyUrls" %>
 
 <!DOCTYPE html>
@@ -20,11 +21,19 @@
                 </LayoutTemplate>
                 <ItemTemplate>
                     <li>
-                        <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />:<a href="<%# FriendlyUrl.Href("~/Item", Eval("Id")) %>"><asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' /></a>
+                        <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />:
+                        <a href="<%# FriendlyUrl.Href("~/Item", Eval("Id")) %>">
+                            <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
+                        </a>
                     </li>
                 </ItemTemplate>
             </asp:ListView>
-            <asp:ObjectDataSource runat="server" ID="ProductDataSource" TypeName="FriendlyUrlsSample.Data.ProductDao" SelectMethod="GetAllProducts"></asp:ObjectDataSource>
+            <asp:ObjectDataSource 
+                runat="server" 
+                ID="ProductDataSource" 
+                TypeName="FriendlyUrlsSample.Data.ProductDao" 
+                SelectMethod="GetAllProducts">
+            </asp:ObjectDataSource>
         </div>
     </form>
 </body>
